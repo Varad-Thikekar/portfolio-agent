@@ -1,0 +1,17 @@
+[project]
+name = "langgraph-learning"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=0.3.27",
+    "langchain-google-genai>=2.1.12",
+    "langgraph>=0.6.8",
+    "langsmith>=0.4.31",
+    "loadenv>=0.1.1",
+    "matplotlib>=3.10.6",
+    "notebook>=7.4.7",
+    "python-dotenv>=1.1.1",
+    "yfinance>=0.2.66",
+]
