@@ -42,10 +42,20 @@ class PortfolioState(TypedDict):
 
 The graph defines a control flow to handle transactions and inquiries:
 
+![Diagram of the Portfolio Management Agent's LangGraph workflow](images/agent_workflow.png)
+
 - **`chatbot` Node:** The core LLM (Gemini) is invoked. It decides whether to talk or call a tool.
 - **`check_eligibility` Node:** **Router** runs immediately after the LLM requests a trade tool. It checks the user's current `cash_balance` and `portfolio` to ensure the requested trade is feasible before proceeding.
 - **`tools` Node:** Executes the requested tool (e.g., fetches a price, or initiates a buy/sell/deposit, which triggers the HITL interrupt).
 - **`update_state` Node:** Runs only after a **successful and approved** transaction. It updates the `cash_balance` and `portfolio` holdings in the state.
+
+---
+
+## ✨ Observability and Tracing
+
+The agent leverages **LangSmith** for full-stack observability, allowing you to trace the flow of execution, inspect tool inputs/outputs, and debug the state updates across the entire graph run.
+
+![Screenshot of a LangSmith trace showing the agent's full execution path](images/tracing.png)
 
 ---
 
@@ -98,9 +108,7 @@ All primary dependencies are listed in your **`pyproject.toml`** file, including
 
 ---
 
-## 📝 Usage
 
-To run the agent and test its full functionality, open the Jupyter Notebook:
+## ⚖️ License
 
-```bash
-jupyter lab
+Distributed under the MIT License. See `LICENSE.md` for more information.
